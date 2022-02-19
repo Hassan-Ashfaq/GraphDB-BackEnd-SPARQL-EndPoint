@@ -1,0 +1,33 @@
+{% extends 'nobel/base.html' %}
+<!-- {% load crispy_forms_tags  %} -->
+
+{% load static %}
+
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+    {% for message in messages %}
+        <div id="message" class="alert alert-danger" role="alert">    
+            <span {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </span>
+        </div>
+    {% endfor %}
+
+    <!-- <center><h2>SPARQL Endpoint</h2></center> -->
+
+    <div class="form-group">
+        <form action="{% url 'result' %}" method="POST" class="form_of">
+            {% csrf_token %}
+            <label for="exampleFormControlTextarea1">Enter Your SPARQL Query</label>
+            <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="15" name="Query"></textarea>
+            <br/>
+            <button class="login100-form-btn" type="submit">
+                Submit
+            </button>
+        </form>
+    </div>
+{% endblock %}
+
+

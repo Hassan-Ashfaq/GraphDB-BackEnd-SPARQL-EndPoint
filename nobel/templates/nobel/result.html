@@ -1,0 +1,30 @@
+{% extends 'nobel/base.html' %}
+<!-- {% load crispy_forms_tags  %} -->
+
+{% load static %}
+
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+    <!-- <center><h1>Result</h1></center> -->
+    <hr/>
+    <table id="mytable" class="table table-striped" width="100%">
+        <thead>
+            <tr>
+                {% for col in Col_names %}
+                    <th>{{col}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody> 
+            {% for col in Col_res %}
+                <tr class="data_rows">
+                    {% for element in col %} 
+                        <td>{{element}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
